@@ -1,0 +1,42 @@
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.infor {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__name {
+    align-self: center;
+    font-weight: bold;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 1rem;
+    justify-items: start;
+
+    &--cases-title {
+      grid-column: 1 / 2;
+    }
+
+    &--cases-number {
+      font-weight: bold;
+      grid-column: 2 / 3;
+      justify-self: end;
+    }
+
+    &--deaths-title {
+      grid-column: 1 / 2;
+    }
+
+    &--deaths-number {
+      font-weight: bold;
+      grid-column: 2 / 3;
+      justify-self: end;
+    }
+  }
+}
