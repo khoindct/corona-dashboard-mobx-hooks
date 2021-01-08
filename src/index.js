@@ -11,6 +11,11 @@ const StoreProvider = ({ children }) => {
     global: null,
     countries: [],
     country: null,
+    addCountry: (country) => store.countries.push(country),
+    setCountry: (country) =>
+      country === null
+        ? (store.country = null)
+        : (store.country = { ...country }),
   }));
 
   return (

@@ -1,0 +1,84 @@
+.total-card {
+  color: #5f6368;
+  font-size: 1.5rem;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 1.6rem;
+
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  grid-gap: 2rem;
+
+  &__loading {
+    grid-row: 2 / 3;
+    justify-self: center;
+  }
+
+  &__header {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+
+    grid-row: 1 / 2;
+  }
+
+  &__details {
+    grid-row: 2 / 3;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    grid-gap: 1rem;
+
+    &--total-cases-title {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    &--total-cases-result {
+      font-size: 2.6rem;
+      font-weight: bold;
+      color: #202124;
+
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    &--new-cases-title {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    &--new-cases-result {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+    }
+
+    &--new-cases-range {
+      font-size: 1.3rem;
+
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+    }
+
+    &--deaths-title {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    &--deaths-result {
+      font-size: 2.6rem;
+      font-weight: bold;
+      color: #202124;
+
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__footer {
+    font-size: 1.3rem;
+
+    grid-row: 3 / 4;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MapContainer, TileLayer, Popup, Circle } from "react-leaflet";
 import { StoreContext } from "..";
 import countryCoors from "../dev-data/countryCoors.json";
@@ -8,10 +8,11 @@ import "./CoronaMap.scss";
 import "leaflet/dist/leaflet.css";
 import { useObserver } from "mobx-react";
 import { toJS } from "mobx";
+import { Loader } from "@progress/kendo-react-indicators";
 
 const CoronaMap = () => {
-  const position = countryCoors["vietnam"];
   const store = useContext(StoreContext);
+  const [position, setPosition] = useState(countryCoors["vietnam"]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,21 +21,34 @@ const CoronaMap = () => {
       const countries = await dataSummary.data.Countries;
       countries.forEach((country) => {
         const countryObj = { ...country, Coors: countryCoors[country.Slug] };
-        store.countries.push(countryObj);
+        store.addCountry(countryObj);
       });
     };
 
     fetchData();
-  }, [store]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // useEffect(() => {
+  //   map.setView(position);
+
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [position]);
 
   return useObserver(() =>
-    !store.countries ? (
-      "Loading"
+    !store.countries.length ? (
+      <section className='leaflet-container'>
+        <Loader
+          className='leaflet-container__loading'
+          type='infinite-spinner'
+        />
+      </section>
     ) : (
       <section className='leaflet-container'>
         <MapContainer
-          // center={ ? : }
           center={position}
+          // center={position}
           zoom={4}
           minZoom={3}
           maxZoom={6}
@@ -63,7 +77,9 @@ const CoronaMap = () => {
                       this.closePopup();
                     },
                     click: function () {
-                      store.country = { ...country };
+                      this.openPopup();
+                      store.setCountry(toJS(country));
+                      setPosition(toJS(country.Coors));
                     },
                   }}
                 >

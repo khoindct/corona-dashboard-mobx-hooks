@@ -1,3 +1,5 @@
+@import "~@progress/kendo-theme-default/dist/all.scss";
+
 .container {
   display: grid;
   grid-template-rows: 60vh min-content;
@@ -13,10 +15,40 @@
   display: grid;
   grid-template-rows: 1fr min-content;
   justify-items: center;
-  grid-gap: 1rem;
+  // grid-gap: 1rem;
+
+  &__input {
+    width: 40%;
+    transform: translateY(-50%);
+    z-index: 1000;
+
+    position: relative;
+  }
+
+  &__input-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #5f6368;
+    position: absolute;
+    top: 17%;
+    right: 2rem;
+    z-index: 2000;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  &__input-icon:hover {
+    transform: scale(1.25);
+  }
+
+  &__input-icon:focus,
+  &__input-icon:active {
+    transform: scale(1.05);
+  }
 }
 
 .statistic {
   grid-row: 2 / -1;
   grid-column: main-start / main-end;
+  // justify-self: center;
 }

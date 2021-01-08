@@ -1,0 +1,25 @@
+.corona-cases {
+  color: #5f6368;
+  font-size: 1.5rem;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__loading {
+    align-self: center;
+  }
+
+  &__header {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+  }
+
+  &__footer {
+    font-size: 1.3rem;
+  }
+}
